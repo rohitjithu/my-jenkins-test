@@ -3,21 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Treasure Hunt</title>
+  <title>Golden Treasure Hunt</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;background:#036;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#fff}
-    .wrapper{background:#043047;padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center;max-width:480px;width:90%}
-    h1{margin:0 0 8px}
-    p.lead{color:#bcd; margin:0 0 18px}
-    #chest{font-size:96px;height:110px;display:flex;align-items:center;justify-content:center}
-    button{background:#ffcc00;border:0;padding:12px 18px;border-radius:8px;font-weight:700;cursor:pointer}
-    #status{margin-top:16px;font-weight:700}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+    .wrapper {
+      background: linear-gradient(145deg, #2a2000, #1a1200);
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.7), inset 0 0 15px rgba(255, 223, 0, 0.4);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+      transition: transform 0.3s ease;
+    }
+    .wrapper:hover {
+      transform: scale(1.02);
+    }
+    h1 {
+      margin: 0 0 10px;
+      background: linear-gradient(90deg, #ffdf00, #ffd700, #f5c71a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+    p.lead {
+      color: #f8e58c;
+      margin: 0 0 20px;
+    }
+    #chest {
+      font-size: 100px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(255, 223, 0, 0.8);
+    }
+    button {
+      background: linear-gradient(90deg, #ffcc00, #ffd700);
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #3b2e00;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #ffe34d, #ffcc00);
+      transform: scale(1.05);
+    }
+    #status {
+      margin-top: 16px;
+      font-weight: 700;
+      color: #ffec80;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>Treasure Hunt</h1>
-    <p class="lead">Click the button to open the treasure chest.</p>
+    <h1>Golden Treasure Hunt</h1>
+    <p class="lead">Click the button to open the golden chest!</p>
 
     <div id="chest" aria-hidden="true">📦</div>
     <button id="openBtn">Open Treasure</button>
@@ -30,18 +90,18 @@
     const status = document.getElementById('status');
     let opened = false;
 
-    btn.addEventListener('click', ()=>{
-      if(opened) return;
+    btn.addEventListener('click', () => {
+      if (opened) return;
       opened = true;
-      chest.textContent = '🎁';
-      status.textContent = 'You have 1 treasure!';
+      chest.textContent = '💰';
+      status.textContent = 'You have found the Golden Treasure! ✨';
       btn.disabled = true;
       btn.textContent = 'Opened';
     });
 
-    // allow keyboard activation
-    btn.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){
+    // accessibility: allow Enter/Space key activation
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         btn.click();
       }
@@ -49,4 +109,3 @@
   </script>
 </body>
 </html>
-
