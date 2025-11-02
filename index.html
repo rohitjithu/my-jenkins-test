@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Treasure Hunt</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#036;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#fff}
+    .wrapper{background:#043047;padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center;max-width:480px;width:90%}
+    h1{margin:0 0 8px}
+    p.lead{color:#bcd; margin:0 0 18px}
+    #chest{font-size:96px;height:110px;display:flex;align-items:center;justify-content:center}
+    button{background:#ffcc00;border:0;padding:12px 18px;border-radius:8px;font-weight:700;cursor:pointer}
+    #status{margin-top:16px;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Treasure Hunt</h1>
+    <p class="lead">Click the button to open the treasure chest.</p>
+
+    <div id="chest" aria-hidden="true">📦</div>
+    <button id="openBtn">Open Treasure</button>
+    <div id="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('openBtn');
+    const chest = document.getElementById('chest');
+    const status = document.getElementById('status');
+    let opened = false;
+
+    btn.addEventListener('click', ()=>{
+      if(opened) return;
+      opened = true;
+      chest.textContent = '🎁';
+      status.textContent = 'You have 1 treasure!';
+      btn.disabled = true;
+      btn.textContent = 'Opened';
+    });
+
+    // allow keyboard activation
+    btn.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  </script>
+</body>
+</html>
+
